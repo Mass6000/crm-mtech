@@ -18,6 +18,10 @@ export class CompanyService {
     return this.companyRef.valueChanges();
   }
 
+  editCompany(company: any) {
+    this.companyRef.update(company);
+  }
+
   saveCompany(company: Company) {
     this.companyRef.set(company);
   }

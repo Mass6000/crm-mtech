@@ -8,7 +8,7 @@ import { FlexLayoutModule} from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { MatCardModule, MatFormFieldModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatIconModule, MatInputModule, MatToolbarModule } from '@angular/material';
 import { CompanyEditComponent } from './company/company-edit/company-edit.component';
 import { FormsModule } from '@angular/forms';
 
@@ -28,8 +28,11 @@ import { FormsModule } from '@angular/forms';
     FlexLayoutModule,
     MatToolbarModule,
     MatCardModule,
-    MatFormFieldModule,
-    FormsModule
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
+    MatIconModule
+
 
   ],
   providers: [],
