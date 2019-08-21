@@ -9,11 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { MatToolbarModule } from '@angular/material';
+import { CompanyEditComponent } from './company/company-edit/company-edit.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CompanyEditComponent
   ],
   imports: [
     BrowserModule,
