@@ -19,15 +19,21 @@ export class CompanyService {
   }
 
   editCompany(company: any) {
-    this.companyRef.update(company);
+    this.companyRef.update(company)
+      .then(_ => console.log('Success on update'))
+      .catch(error => console.log('update', error));
   }
 
   deleteCompany() {
-    this.companyRef.delete();
+    this.companyRef.delete()
+      .then(_ => console.log('Success on delete'))
+      .catch(error => console.log('delete', error));
   }
 
   saveCompany(company: Company) {
-    this.companyRef.set(company);
+    this.companyRef.set(company)
+      .then(_ => console.log('Success on set'))
+      .catch(error => console.log('set', error));
   }
 
 }
