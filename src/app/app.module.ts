@@ -8,8 +8,9 @@ import { FlexLayoutModule} from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { MatToolbarModule } from '@angular/material';
+import { MatCardModule, MatFormFieldModule, MatToolbarModule } from '@angular/material';
 import { CompanyEditComponent } from './company/company-edit/company-edit.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +26,10 @@ import { CompanyEditComponent } from './company/company-edit/company-edit.compon
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     FlexLayoutModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule,
+    MatFormFieldModule,
+    FormsModule
 
   ],
   providers: [],
