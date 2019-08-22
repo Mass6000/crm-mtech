@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentChangeAction } from '@angular/fire/firestore';
 import { Company } from '../models/company';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 // import { from, Observable } from 'rxjs';
 // import { of } from 'rxjs/internal/observable/of';
 // import { catchError } from 'rxjs/operators';
@@ -12,13 +13,30 @@ import { Observable } from 'rxjs';
 export class CompanyService {
 
   private companyRef: AngularFirestoreDocument<Company>;
+  private companiesRef: AngularFirestoreCollection<Company>;
 
   constructor(private db: AngularFirestore) {
     this.companyRef = this.db.doc<Company>('companies/9pMLuG9tpU4utRtci8o9');
+    this.companiesRef = this.db.collection<Company>('companies');
   }
 
   getCompanyObservable(): Observable<Company> {
     return this.companyRef.valueChanges();
+  }
+
+  getCompaniesObservable(): Observable<Company[]> {
+    return this.companiesRef.snapshotChanges()
+      .pipe(
+        map((items: DocumentChangeAction<Company>[]): Company[] => {
+          return items.map((item: DocumentChangeAction<Company>): Company => {
+            return {
+              id: item.payload.doc.id,
+              name: item.payload.doc.data().name,
+              phone: item.payload.doc.data().phone
+            };
+          });
+        })
+      );
   }
 
   saveCompany(company: Company) {
